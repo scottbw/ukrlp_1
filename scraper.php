@@ -115,5 +115,21 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
 
     }
 
- function clean($val) {
-        $val = str_replace('&nbsp
+    function clean($val) {
+        $val = str_replace('&nbsp;',' ',$val);
+        $val = str_replace('&amp;','&',$val);
+        $val = html_entity_decode($val);
+        $val = strip_tags($val);
+        $val = trim($val);
+        $val = utf8_decode($val);
+        return($val);
+    }
+    
+    function oneline($code) {
+        $code = str_replace("\n",'',$code);
+        $code = str_replace("\r",'',$code);
+        return $code;
+    }
+
+      
+?>
