@@ -23,9 +23,12 @@ if($counter<10000000)
 $html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider.page_pls_provDetails?x=&pn_p_id=".$counter."&pv_status=VERIFIED&pv_vis_code=L"));
 
 preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$html,$arr);
+
+echo json_encode($arr);
+
    if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
-echo $code + "\n";
+
 preg_match_all('|<div class="provhead">UKPRN: ([0-9]*?)</div>|',$code,$num);
  if (isset($num [1][0])) { $num  = trim($num [1][0]);} else { $num ='';}
 
