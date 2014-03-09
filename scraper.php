@@ -14,7 +14,7 @@ if($counter<10000000)
     $counter=10000000;
 }
 
-    for ($i=0; $i< 5263; $i++) {
+    for ($i=0; $i< 1000; $i++) {
 
         $html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider.page_pls_provDetails?x=&pn_p_id=".$counter."&pv_status=VERIFIED&pv_vis_code=L"));
         
@@ -77,7 +77,7 @@ if($counter<10000000)
         }
         
         $counter++;
-        if ($counter == $max) {
+        if ($counter >= $max) {
             scraperwiki::save_var('counter',10000000); 
             $i= 1001;
         }
