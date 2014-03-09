@@ -8,7 +8,7 @@ require 'scraperwiki.php';
 #return;
 
 $max = 10045263;
-$counter = scraperwiki::get_var('counter');          
+$counter = scraperwiki::get_var('counter',10000000);          
 if($counter<10000000)
 {
     $counter=10000000;
