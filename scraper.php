@@ -14,7 +14,7 @@ if($counter<10000000)
     $counter=10000000;
 }
 
-    for ($i=0; $i< 1000; $i++) {
+    for ($i=0; $i< 45263; $i++) {
 
         $html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider.page_pls_provDetails?x=&pn_p_id=".$counter."&pv_status=VERIFIED&pv_vis_code=L"));
         
