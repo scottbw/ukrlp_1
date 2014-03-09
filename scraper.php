@@ -37,11 +37,19 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
             echo json_encode($num);
             echo "\n";
             
+            echo "code \n";
+            echo json_encode($code);
+            echo "\n";
+            
             preg_match_all('|</div>.*?<div class="provhead">(.*?)<|',$code,$name);
             if (isset($name [1][0])) { $name = trim($name [1][0]);} else { $name ='';}
             
             echo "name \n";
             echo json_encode($name);
+            echo "\n";
+            
+            echo "code \n";
+            echo json_encode($code);
             echo "\n";
             
             preg_match_all('|<div class="tradingname">Trading Name: <span>(.*?)</span></div>|',$code,$trading);
@@ -51,6 +59,10 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
             echo json_encode($trading);
             echo "\n";
             
+            echo "code \n";
+            echo json_encode($code);
+            echo "\n";
+            
             preg_match_all('|<div class="assoc">Legal address</div>(.*?)<div|',$code,$legal);
             if (isset($legal [1][0])) { $legal = trim($legal [1][0]);} else { $legal ='';}
             
@@ -58,11 +70,19 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
             echo json_encode($legal);
             echo "\n";
             
+            echo "code \n";
+            echo json_encode($code);
+            echo "\n";
+            
             preg_match_all('|<div class="assoc">Primary contact address</div>(.*?)<div|',$code,$primary);
             if (isset($primary[1][0])) { $primary= trim($primary[1][0]);} else { $primary='';}
             
             echo "primary \n";
             echo json_encode($primary);
+            echo "\n";
+            
+            echo "code \n";
+            echo json_encode($code);
             echo "\n";
             
             $primary = parseAddress($primary);
