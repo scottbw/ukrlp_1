@@ -25,7 +25,7 @@ $html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider
 preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$html,$arr);
    if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
-
+echo $code + "\n";
 preg_match_all('|<div class="provhead">UKPRN: ([0-9]*?)</div>|',$code,$num);
  if (isset($num [1][0])) { $num  = trim($num [1][0]);} else { $num ='';}
 
@@ -44,9 +44,7 @@ if (isset($primary[1][0])) { $primary= trim($primary[1][0]);} else { $primary=''
 
 $primary = parseAddress($primary);
 $legal= parseAddress($legal);
-       echo $html;
-       echo "\n";
-       echo $name;
+
         if (trim($name)!='') {
 echo "saving";
 scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($name),'trading' => clean($trading),
