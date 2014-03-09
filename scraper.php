@@ -55,7 +55,7 @@ scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($n
                                             'primary_fax' => clean($primary['fax']),'primary_email' => clean($primary['email']),
                                       'primary_web' => clean($primary['web']), 'primary_courses' => clean($primary['courses']) ));    
     }
-      scraperwiki::save_metadata('counter',$counter);  
+      scraperwiki::save_VAR('counter',$counter);  
     }
     }
 
