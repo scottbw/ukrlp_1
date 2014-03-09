@@ -3,8 +3,8 @@ require 'scraperwiki.php';
 ######################################
 # Basic PHP scraper
 ######################################
-#scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`value_blob` blob, `type` text, `name` text)");
-#scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`date_scraped` text, `primary_web` text, `name` text, `primary_phone` text, `legal_email` text, `legal_web` text, `legal_fax` text, `num` text, `trading` text, `legal_phone` text, `primary_email` text, `primary_fax` text, `primary_address` text, `legal_address` text, `primary_courses` text)");
+scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`value_blob` blob, `type` text, `name` text)");
+scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`date_scraped` text, `primary_web` text, `name` text, `primary_phone` text, `legal_email` text, `legal_web` text, `legal_fax` text, `num` text, `trading` text, `legal_phone` text, `primary_email` text, `primary_fax` text, `primary_address` text, `legal_address` text, `primary_courses` text)");
 #return;
 
 $max = 10045263;
@@ -14,7 +14,7 @@ if($counter<10000000)
     $counter=10000000;
 }
 
-    for ($i=0; $i< 1000; $i++) {
+    for ($i=0; $i< 1; $i++) {
         $counter++;
         if ($counter == $max) {
             scraperwiki::save_var('counter',10000000); 
