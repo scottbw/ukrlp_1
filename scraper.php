@@ -26,32 +26,44 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
 
    if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
-            echo "code = " + $code + ".<br/>";
+            echo "code <br/>";
+            echo json_encode($code);
+            echo "<br/>";
 
             preg_match_all('|<div class="provhead">UKPRN: ([0-9]*?)</div>|',$code,$num);
             if (isset($num [1][0])) { $num  = trim($num [1][0]);} else { $num ='';}
              
-            echo "num = " + $num + ".<br/>";
+            echo "num <br/>";
+            echo json_encode($num);
+            echo "<br/>";
             
             preg_match_all('|</div>.*?<div class="provhead">(.*?)<|',$code,$name);
             if (isset($name [1][0])) { $name = trim($name [1][0]);} else { $name ='';}
             
-            echo "name = " + $name + ".<br/>";
+            echo "name <br/>";
+            echo json_encode($name);
+            echo "<br/>";
             
             preg_match_all('|<div class="tradingname">Trading Name: <span>(.*?)</span></div>|',$code,$trading);
             if (isset($trading[1][0])) { $trading = trim($trading[1][0]);} else { $trading='';}
             
-            echo "trading = " + $trading + ".<br/>";
+            echo "trading <br/>";
+            echo json_encode($trading);
+            echo "<br/>";
             
             preg_match_all('|<div class="assoc">Legal address</div>(.*?)<div|',$code,$legal);
             if (isset($legal [1][0])) { $legal = trim($legal [1][0]);} else { $legal ='';}
             
-            echo "legal = " + $legal + ".<br/>";
+            echo "legal <br/>";
+            echo json_encode($legal);
+            echo "<br/>";
             
             preg_match_all('|<div class="assoc">Primary contact address</div>(.*?)<div|',$code,$primary);
             if (isset($primary[1][0])) { $primary= trim($primary[1][0]);} else { $primary='';}
             
-            echo "primary = " + $primary + ".<br/>";
+            echo "primary <br/>";
+            echo json_encode($primary);
+            echo "<br/>";
             
             $primary = parseAddress($primary);
             $legal= parseAddress($legal);
@@ -104,20 +116,4 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
     }
 
  function clean($val) {
-        $val = str_replace('&nbsp;',' ',$val);
-        $val = str_replace('&amp;','&',$val);
-        $val = html_entity_decode($val);
-        $val = strip_tags($val);
-        $val = trim($val);
-        $val = utf8_decode($val);
-        return($val);
-    }
-    
-    function oneline($code) {
-        $code = str_replace("\n",'',$code);
-        $code = str_replace("\r",'',$code);
-        return $code;
-    }
-
-      
-?>
+        $val = str_replace('&nbsp
