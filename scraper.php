@@ -26,51 +26,49 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
 
    if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
-            echo "code \n";
-            echo json_encode($code);
-            echo "\n";
+            #echo "code \n";
+            #echo json_encode($code);
+            #echo "\n";
 
             preg_match_all('|<div class="provhead">UKPRN: ([0-9]*?)</div>|',$code,$num);
             if (isset($num [1][0])) { $num  = trim($num [1][0]);} else { $num ='';}
              
-            echo "num \n";
-            echo json_encode($num);
-            echo "\n";
+            #echo "num \n";
+            #echo json_encode($num);
+            #echo "\n";
             
             preg_match_all('|<div class="pt">(.*?)<|',$code,$name);
             if (isset($name [1][0])) { $name = trim($name [1][0]);} else { $name ='';}
             
-            echo "name \n";
-            echo json_encode($name);
-            echo "\n";
+            #echo "name \n";
+            #echo json_encode($name);
+            #echo "\n";
             
             preg_match_all('|<div class="tradingname">Trading Name: <span>(.*?)</span></div>|',$code,$trading);
             if (isset($trading[1][0])) { $trading = trim($trading[1][0]);} else { $trading='';}
             
-            echo "trading \n";
-            echo json_encode($trading);
-            echo "\n";
+            #echo "trading \n";
+            #echo json_encode($trading);
+            #echo "\n";
             
             preg_match_all('|<div class="assoc">Legal Address</div>(.*?)<div|',$code,$legal);
             if (isset($legal [1][0])) { $legal = trim($legal [1][0]);} else { $legal ='';}
             
-            echo "legal \n";
-            echo json_encode($legal);
-            echo "\n";
+            #echo "legal \n";
+            #echo json_encode($legal);
+            #echo "\n";
             
             preg_match_all('|<div class="assoc">Primary contact address</div>(.*?)<div|',$code,$primary);
             if (isset($primary[1][0])) { $primary= trim($primary[1][0]);} else { $primary='';}
             
-            echo "primary \n";
-            echo json_encode($primary);
-            echo "\n";
+            #echo "primary \n";
+            #echo json_encode($primary);
+            #echo "\n";
             
             $primary = parseAddress($primary);
             $legal= parseAddress($legal);
             
             if (trim($name)!='') {
-                echo "saving";
-                blarg;
                 scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($name),'trading' => clean($trading),
                                                              'legal_address' => clean($legal['address']),'legal_phone' => clean($legal['phone']),
                                                             'legal_fax' => clean($legal['fax']),'legal_email' => clean($legal['email']),
@@ -79,7 +77,7 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
                                                             'primary_fax' => clean($primary['fax']),'primary_email' => clean($primary['email']),
                                                       'primary_web' => clean($primary['web']), 'primary_courses' => clean($primary['courses']) ));    
                 }
-            scraperwiki::save_metadata('counter',$counter);  
+            scraperwiki::save_var('counter',$counter);  
         }
     }
 
