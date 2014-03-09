@@ -46,7 +46,7 @@ $primary = parseAddress($primary);
 $legal= parseAddress($legal);
        
         if (trim($name)!='') {
-
+echo "saving";
 scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($name),'trading' => clean($trading),
                                              'legal_address' => clean($legal['address']),'legal_phone' => clean($legal['phone']),
                                             'legal_fax' => clean($legal['fax']),'legal_email' => clean($legal['email']),
