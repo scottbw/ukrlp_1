@@ -26,44 +26,44 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
 
    if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
-            echo "code <br/>";
+            echo "code \n";
             echo json_encode($code);
-            echo "<br/>";
+            echo "\n";
 
             preg_match_all('|<div class="provhead">UKPRN: ([0-9]*?)</div>|',$code,$num);
             if (isset($num [1][0])) { $num  = trim($num [1][0]);} else { $num ='';}
              
-            echo "num <br/>";
+            echo "num \n";
             echo json_encode($num);
-            echo "<br/>";
+            echo "\n";
             
             preg_match_all('|</div>.*?<div class="provhead">(.*?)<|',$code,$name);
             if (isset($name [1][0])) { $name = trim($name [1][0]);} else { $name ='';}
             
-            echo "name <br/>";
+            echo "name \n";
             echo json_encode($name);
-            echo "<br/>";
+            echo "\n";
             
             preg_match_all('|<div class="tradingname">Trading Name: <span>(.*?)</span></div>|',$code,$trading);
             if (isset($trading[1][0])) { $trading = trim($trading[1][0]);} else { $trading='';}
             
-            echo "trading <br/>";
+            echo "trading \n";
             echo json_encode($trading);
-            echo "<br/>";
+            echo "\n";
             
             preg_match_all('|<div class="assoc">Legal address</div>(.*?)<div|',$code,$legal);
             if (isset($legal [1][0])) { $legal = trim($legal [1][0]);} else { $legal ='';}
             
-            echo "legal <br/>";
+            echo "legal \n";
             echo json_encode($legal);
-            echo "<br/>";
+            echo "\n";
             
             preg_match_all('|<div class="assoc">Primary contact address</div>(.*?)<div|',$code,$primary);
             if (isset($primary[1][0])) { $primary= trim($primary[1][0]);} else { $primary='';}
             
-            echo "primary <br/>";
+            echo "primary \n";
             echo json_encode($primary);
-            echo "<br/>";
+            echo "\n";
             
             $primary = parseAddress($primary);
             $legal= parseAddress($legal);
