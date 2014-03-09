@@ -14,17 +14,13 @@ if($counter<10000000)
     $counter=10000000;
 }
 
-    for ($i=0; $i< 1; $i++) {
-        $counter++;
-        if ($counter == $max) {
-            scraperwiki::save_var('counter',10000000); 
-            $i= 1001;
-        }
-$html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider.page_pls_provDetails?x=&pn_p_id=".$counter."&pv_status=VERIFIED&pv_vis_code=L"));
+    for ($i=0; $i< 1000; $i++) {
 
-preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$html,$arr);
-
-   if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
+        $html = oneline(scraperwiki::scrape("http://www.ukrlp.co.uk/ukrlp/ukrlp_provider.page_pls_provDetails?x=&pn_p_id=".$counter."&pv_status=VERIFIED&pv_vis_code=L"));
+        
+        preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$html,$arr);
+    
+        if (isset($arr[1][0])) { $code = $arr[1][0];} else { $code='';}
         if ($code!='') {
             #echo "code \n";
             #echo json_encode($code);
@@ -78,6 +74,12 @@ preg_match_all('|<div class="pod_main_body">(.*?<div )class="searchleft">|',$htm
                                                       'primary_web' => clean($primary['web']), 'primary_courses' => clean($primary['courses']) ));    
                 }
             scraperwiki::save_var('counter',$counter);  
+        }
+        
+        $counter++;
+        if ($counter == $max) {
+            scraperwiki::save_var('counter',10000000); 
+            $i= 1001;
         }
     }
 
