@@ -52,4 +52,60 @@ scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($n
                                             'legal_fax' => clean($legal['fax']),'legal_email' => clean($legal['email']),
                                         'legal_web' => clean($legal['web']),
                                     'primary_address' => clean($primary['address']),'primary_phone' => clean($primary['phone']),
-                                            'primary_
+                                            'primary_fax' => clean($primary['fax']),'primary_email' => clean($primary['email']),
+                                      'primary_web' => clean($primary['web']), 'primary_courses' => clean($primary['courses']) ));    
+    }
+      scraperwiki::save_metadata('counter',$counter);  
+    }
+    }
+
+    function parseAddress($val) {
+
+        preg_match_all('|<strong>Telephone: </strong>(.*?)<br />|',$val,$phone);
+        if (isset($phone[1][0])) { $dat['phone'] = trim($phone[1][0]);} else { $dat['phone']='';}
+        preg_match_all('|<strong>E-mail: </strong><a href="mailto:(.*?)">.*?</a><br />|',$val,$email);
+        if (isset($email[1][0])) { $dat['email'] = trim($email[1][0]);} else { $dat['email']='';}
+        preg_match_all('|<strong>Website: </strong><a target="_blank" href="(.*?)">.*?</a><br />|',$val,$web);
+        if (isset($web[1][0])) { $dat['web'] = trim($web[1][0]);} else { $dat['web']='';}
+        preg_match_all('|<strong>Fax: </strong>(.*?)<br />|',$val,$fax);
+        if (isset($fax[1][0])) { $dat['fax'] = trim($fax[1][0]);} else { $dat['fax']='';}
+        if (isset($courses[1][0])) { $dat ['courses'] = trim($courses[1][0]);} else { $dat['courses']='';}
+        preg_match_all('|<strong>Courses: </strong>(.*?)<br />|',$val,$courses);
+        $p = explode('<strong>',$val);
+       
+        $p = explode('<br />',$p[0]);
+        
+        $dat['address'] = '';
+        foreach ($p as $a) {
+            $a = trim($a);
+            if ($a !='') {
+                if ($dat['address']!='') { $dat['address'] .=', '; }
+                $dat['address'] .= $a;
+            }
+        }
+        if ($dat['address'] == 'Not specified. Please use the above.') {
+        $dat['address'] = '';
+        }
+
+        return $dat;
+
+    }
+
+ function clean($val) {
+        $val = str_replace('&nbsp;',' ',$val);
+        $val = str_replace('&amp;','&',$val);
+        $val = html_entity_decode($val);
+        $val = strip_tags($val);
+        $val = trim($val);
+        $val = utf8_decode($val);
+        return($val);
+    }
+    
+    function oneline($code) {
+        $code = str_replace("\n",'',$code);
+        $code = str_replace("\r",'',$code);
+        return $code;
+    }
+
+      
+?>
