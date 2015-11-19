@@ -72,7 +72,7 @@ if($counter<10000000)
                         'instname' => clean($name),
                         'trading' => clean($trading),
                     ),
-                    "swdata"
+                    "data"
                 );    
             }
             scraperwiki::save_var('counter',$counter);  
