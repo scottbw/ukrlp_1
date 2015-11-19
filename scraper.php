@@ -64,11 +64,13 @@ if($counter<10000000)
             $primary = parseAddress($primary);
             $legal= parseAddress($legal);
             
+            echo $num;
+            
             if (trim($name)!='') {
                 scraperwiki::save(
                     array('num'), 
                     array(
-                        'num' => "". clean($num),
+                        'num' => clean($num),
                         'instname' => clean($name),
                         'trading' => clean($trading),
                     )
