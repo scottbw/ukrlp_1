@@ -65,7 +65,7 @@ if($counter<10000000)
             $legal= parseAddress($legal);
             
             if (trim($name)!='') {
-                scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($name),'trading' => clean($trading),
+                scraperwiki::save(array('num'), array('num' => "".clean($num),'instname' => clean($name),'trading' => clean($trading),
                                                              'legaladdress' => clean($legal['address']),'legalphone' => clean($legal['phone']),
                                                             'legalfax' => clean($legal['fax']),'legalemail' => clean($legal['email']),
                                                         'legalweb' => clean($legal['web']),
