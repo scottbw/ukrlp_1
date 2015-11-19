@@ -65,7 +65,7 @@ if($counter<10000000)
             $legal= parseAddress($legal);
             
             if (trim($name)!='') {
-                scraperwiki::save(
+                scraperwiki::savesqlite(
                     array('ukprn'), 
                     array(
                         'ukprn' => clean($num),
