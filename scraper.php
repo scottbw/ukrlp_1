@@ -67,7 +67,7 @@ if($counter<10000000)
             if (trim($name)!='') {
                 scraperwiki::save(
                     array('num'), 
-                    array 'num' => "". clean($num),
+                    array('num' => "". clean($num),
                         'instname' => clean($name),
                         'trading' => clean($trading),
                         'legaladdress' => clean($legal['address']),
