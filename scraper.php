@@ -65,14 +65,25 @@ if($counter<10000000)
             $legal= parseAddress($legal);
             
             if (trim($name)!='') {
-                scraperwiki::save(array('num'), array('num' => "".clean($num),'instname' => clean($name),'trading' => clean($trading),
-                                                             'legaladdress' => clean($legal['address']),'legalphone' => clean($legal['phone']),
-                                                            'legalfax' => clean($legal['fax']),'legalemail' => clean($legal['email']),
-                                                        'legalweb' => clean($legal['web']),
-                                                    'primaryaddress' => clean($primary['address']),'primaryphone' => clean($primary['phone']),
-                                                            'primaryfax' => clean($primary['fax']),'primaryemail' => clean($primary['email']),
-                                                      'primaryweb' => clean($primary['web']), 'primarycourses' => clean($primary['courses']) ));    
-                }
+                scraperwiki::save(
+                    array('num'), 
+                    array('num' => "".clean($num),'instname' => clean($name),
+                        'trading' => clean($trading),
+                        'legaladdress' => clean($legal['address']),
+                        'legalphone' => clean($legal['phone']),
+                        'legalfax' => clean($legal['fax']),
+                        'legalemail' => clean($legal['email']),
+                        'legalweb' => clean($legal['web']),
+                        'primaryaddress' => clean($primary['address']),
+                        'primaryphone' => clean($primary['phone']),
+                        'primaryfax' => clean($primary['fax']),
+                        'primaryemail' => clean($primary['email']),
+                        'primaryweb' => clean($primary['web']), 
+                        'primarycourses' => clean($primary['courses']) 
+                        ),
+                    "data"
+                );    
+            }
             scraperwiki::save_var('counter',$counter);  
         }
         
