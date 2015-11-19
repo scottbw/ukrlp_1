@@ -64,8 +64,6 @@ if($counter<10000000)
             $primary = parseAddress($primary);
             $legal= parseAddress($legal);
             
-            echo $num;
-            
             if (trim($name)!='') {
                 scraperwiki::save(
                     array('ukprn'), 
