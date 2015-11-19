@@ -5741,6 +5741,7 @@ class RedBean_Facade {
 	 * @return array $oneOrMoreBeans
 	 */
 	public static function dispense($type, $num = 1) {
+		echo $type;
 		if (!preg_match('/^[a-z0-9]+$/', $type) && self::$strictType) throw new RedBean_Exception_Security('Invalid type: '.$type); 
 		return self::$redbean->dispense($type, $num);
 	}
