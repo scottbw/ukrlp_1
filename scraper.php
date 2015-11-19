@@ -3,8 +3,8 @@ require 'scraperwiki.php';
 ######################################
 # Basic PHP scraper
 ######################################
-#scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`value_blob` blob, `type` text, `name` text)");
-#scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`date_scraped` text, `primary_web` text, `name` text, `primary_phone` text, `legal_email` text, `legal_web` text, `legal_fax` text, `num` text, `trading` text, `legal_phone` text, `primary_email` text, `primary_fax` text, `primary_address` text, `legal_address` text, `primary_courses` text)");
+#scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`valueblob` blob, `type` text, `name` text)");
+#scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`datescraped` text, `primaryweb` text, `name` text, `primaryphone` text, `legalemail` text, `legalweb` text, `legalfax` text, `num` text, `trading` text, `legalphone` text, `primaryemail` text, `primaryfax` text, `primaryaddress` text, `legaladdress` text, `primarycourses` text)");
 #return;
 
 $max = 10045263;
@@ -66,12 +66,12 @@ if($counter<10000000)
             
             if (trim($name)!='') {
                 scraperwiki::save(array('num'), array('num' => "".clean($num),'name' => clean($name),'trading' => clean($trading),
-                                                             'legal_address' => clean($legal['address']),'legal_phone' => clean($legal['phone']),
-                                                            'legal_fax' => clean($legal['fax']),'legal_email' => clean($legal['email']),
-                                                        'legal_web' => clean($legal['web']),
-                                                    'primary_address' => clean($primary['address']),'primary_phone' => clean($primary['phone']),
-                                                            'primary_fax' => clean($primary['fax']),'primary_email' => clean($primary['email']),
-                                                      'primary_web' => clean($primary['web']), 'primary_courses' => clean($primary['courses']) ));    
+                                                             'legaladdress' => clean($legal['address']),'legalphone' => clean($legal['phone']),
+                                                            'legalfax' => clean($legal['fax']),'legalemail' => clean($legal['email']),
+                                                        'legalweb' => clean($legal['web']),
+                                                    'primaryaddress' => clean($primary['address']),'primaryphone' => clean($primary['phone']),
+                                                            'primaryfax' => clean($primary['fax']),'primaryemail' => clean($primary['email']),
+                                                      'primaryweb' => clean($primary['web']), 'primarycourses' => clean($primary['courses']) ));    
                 }
             scraperwiki::save_var('counter',$counter);  
         }
