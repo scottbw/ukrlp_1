@@ -3,8 +3,8 @@ require 'scraperwiki.php';
 ######################################
 # Basic PHP scraper
 ######################################
-#scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`valueblob` blob, `type` text, `name` text)");
-#scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`datescraped` text, `primaryweb` text, `name` text, `primaryphone` text, `legalemail` text, `legalweb` text, `legalfax` text, `num` text, `trading` text, `legalphone` text, `primaryemail` text, `primaryfax` text, `primaryaddress` text, `legaladdress` text, `primarycourses` text)");
+scraperwiki::sqliteexecute("CREATE TABLE `swvariables` (`valueblob` blob, `type` text, `name` text)");
+scraperwiki::sqliteexecute("CREATE TABLE `swdata` (`datescraped` text, `primaryweb` text, `name` text, `primaryphone` text, `legalemail` text, `legalweb` text, `legalfax` text, `num` text, `trading` text, `legalphone` text, `primaryemail` text, `primaryfax` text, `primaryaddress` text, `legaladdress` text, `primarycourses` text)");
 #return;
 
 $max = 10045263;
@@ -71,7 +71,8 @@ if($counter<10000000)
                         'ukprn' => clean($num),
                         'instname' => clean($name),
                         'trading' => clean($trading),
-                    )
+                    ),
+                    "swdata"
                 );    
             }
             scraperwiki::save_var('counter',$counter);  
